@@ -83,8 +83,8 @@ Pythonスタックの変数リスト表示
 ## デモ
 1. デッドロックするpythonプログラムを実行
 なんでもよいですが、この記事用に試しにつくったプログラムは以下です。
-:::details pythondebugggb.py
-``` python: pythondebugggb.py
+:::details pythondebuggdb.py
+``` python: pythondebuggdb.py
 import threading
 import time
 
