@@ -39,7 +39,7 @@ GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-115.el7
 :::
 
 :::message
-python3ではなぜかlibgccのdebuginfoもインストールしろ、と怒られたので追記しています。ほかにも必要なパッケージが必要かもしれません。足りない場合は、以下に記載するgdb起動時に、インストールが必要なものについてメッセージが出力されるはず？
+python3ではなぜかlibgccのdebuginfoもインストールしろ、と怒られたので追記しています。ほかにも必要なパッケージがあるかもしれません。足りない場合は、以下に記載するgdb起動時に、インストールが必要なものについてメッセージが出力されるはず？
 :::
 
 ## 使い方
@@ -166,35 +166,7 @@ For bug reporting instructions, please see:
 <http://www.gnu.org/software/gdb/bugs/>...
 Reading symbols from /usr/bin/python3.6...Reading symbols from /usr/lib/debug/usr/bin/python3.6.debug...done.
 done.
-Attaching to program: /usr/bin/python3, process 7066
-Reading symbols from /lib64/libpython3.6m.so.1.0...Reading symbols from /usr/lib/debug/usr/lib64/libpython3.6m.so.1.0.debug...done.
-done.
-Loaded symbols for /lib64/libpython3.6m.so.1.0
-Reading symbols from /lib64/libpthread.so.0...Reading symbols from /usr/lib/debug/usr/lib64/libpthread-2.17.so.debug...done.
-done.
-[New LWP 7067]
-[Thread debugging using libthread_db enabled]
-Using host libthread_db library "/lib64/libthread_db.so.1".
-Loaded symbols for /lib64/libpthread.so.0
-Reading symbols from /lib64/libdl.so.2...Reading symbols from /usr/lib/debug/usr/lib64/libdl-2.17.so.debug...done.
-done.
-Loaded symbols for /lib64/libdl.so.2
-Reading symbols from /lib64/libutil.so.1...Reading symbols from /usr/lib/debug/usr/lib64/libutil-2.17.so.debug...done.
-done.
-Loaded symbols for /lib64/libutil.so.1
-Reading symbols from /lib64/libm.so.6...Reading symbols from /usr/lib/debug/usr/lib64/libm-2.17.so.debug...done.
-done.
-Loaded symbols for /lib64/libm.so.6
-Reading symbols from /lib64/libc.so.6...Reading symbols from /usr/lib/debug/usr/lib64/libc-2.17.so.debug...done.
-done.
-Loaded symbols for /lib64/libc.so.6
-Reading symbols from /lib64/ld-linux-x86-64.so.2...Reading symbols from /usr/lib/debug/usr/lib64/ld-2.17.so.debug...done.
-done.
-Loaded symbols for /lib64/ld-linux-x86-64.so.2
-Reading symbols from /usr/lib64/python3.6/lib-dynload/_heapq.cpython-36m-x86_64-linux-gnu.so...Reading symbols from /usr/lib/debug/usr/lib64/python3.6/lib-dynload/_heapq.cpython-36m-x86_64-linux-gnu.so.debug...done.
-done.
-Loaded symbols for /usr/lib64/python3.6/lib-dynload/_heapq.cpython-36m-x86_64-linux-gnu.so
-Reading symbols from /lib64/libgcc_s.so.1...Reading symbols from /usr/lib/debug/usr/lib64/libgcc_s-4.8.5-20150702.so.1.debug...done.
+(中略)
 done.
 Loaded symbols for /lib64/libgcc_s.so.1
 0x00007f5a083e8afb in futex_abstimed_wait (cancel=true, private=<optimized out>, 
@@ -202,7 +174,6 @@ Loaded symbols for /lib64/libgcc_s.so.1
     at ../nptl/sysdeps/unix/sysv/linux/sem_waitcommon.c:43
 43	      err = lll_futex_wait (futex, expected, private);
 (gdb) source /usr/lib/debug/usr/lib64/libpython3.6dm.so.1.0-3.6.8-18.el7.x86_64.debug-gdb.py
-(gdb) py-bt
 (gdb) py-bt
 Traceback (most recent call first):
   <built-in method acquire of _thread.lock object at remote 0x7f5a011328c8>
@@ -234,7 +205,7 @@ Traceback (most recent call first):
 43	      err = lll_futex_wait (futex, expected, private);
 ```
 
-* py-listで実行行を確認しつつ、別スレッド側をpy-btでスタックトレースを確認
+* py-listで該当行を確認しつつ、別スレッド側をpy-btでスタックトレースを確認
 ``` Bash
 (gdb) py-list
   31            :param lock: (object) threading.Lock()で取得した排他用オブジェクト
