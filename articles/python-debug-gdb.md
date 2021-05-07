@@ -3,7 +3,7 @@ title: "gdbでpythonをデバッグ"
 emoji: "🐷"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["python", "gdb"]
-published: false
+published: true
 ---
 
 ## はじめに
